@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Add Person</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <h1>Add New Person</h1>
+
+  <div class="text-center">
+  <a href="{{url_for('get_persons')}}"
+  <button type="button" class="btn btn-success">See All Persons</button>
+</a>
+</div>
+  <form action="/done" method="POST">
+  <div class="col-sm-10">
+    <label>Firstname:</label>
+    <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+  </div>
+  <div class="col-sm-10">
+  <label>Lastname:</label>
+  <input type="text" class="form-control" name="lastname" placeholder="Lastname">
+</div>
+
+<div class="col-sm-10">
+<label>Social security number:</label>
+<input type="text" class="form-control" name="secNumber" placeholder="Social security number">
+</div>
+
+<div class="col-sm-10">
+<label>Email:</label>
+<input type="text" class="form-control" name="email" placeholder="Email">
+</div>
+
+<div class="col-sm-10">
+<label>Address:</label>
+<input type="text" class="form-control" name="address" placeholder="Address">
+</div>
+
+<div class="col-sm-10">
+<label>Comments:</label>
+<input type="text" class="form-control" name="comments" placeholder="Comments">
+</div>
+
+  <div class="col-sm-10">
+  <button type="submit" class="btn btn-success">Submit</button>
+
+</div>
+
+</form>
+
+</body>
+
+
+</html>

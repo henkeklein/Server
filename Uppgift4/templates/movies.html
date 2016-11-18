@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact page</title>
+    <link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  
+            <div class="h1">
+
+              <h1>Movies</h1>
+              <ul>
+                {% for movies in lst %}
+                <li>{{ movies }}</li>
+                {% endfor %}
+              </ul>
+        </div>
+</body>
+
+</html>

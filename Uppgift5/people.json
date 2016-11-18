@@ -1,0 +1,44 @@
+{
+    "people": [
+        {
+            "address": "Solstigen 4",
+            "comment": "Really cool guy and he works with the ferret G\u00f6ran",
+            "email": "fred.asp@gmail.com",
+            "firstname": "Fred",
+            "lastname": "Asp",
+            "secNumber": "19750420"
+        },
+        {
+            "address": "Storgatan 1A",
+            "comment": "Clever guy that studying",
+            "email": "pelle.nilsson@gmail.com",
+            "firstname": "Pelle",
+            "lastname": "Nilsson",
+            "secNumber": "19931028"
+        },
+        {
+            "address": "Bl\u00e5b\u00e4rsgatan 50A",
+            "comment": "Likes to climb in trees",
+            "email": "calle@gmail.com",
+            "firstname": "Calle",
+            "lastname": "Persson",
+            "secNumber": "19850315"
+        },
+        {
+            "address": "Kungsgatan 50a",
+            "comment": "TEST",
+            "email": "henrik.klein12@gmail.com",
+            "firstname": "Henrik",
+            "lastname": "Klein",
+            "secNumber": "199210280674"
+        },
+        {
+            "address": "P\u00e5skgatan 12",
+            "comment": "Nisse is the king!",
+            "email": "nissepisse@hotmail.com",
+            "firstname": "Nils",
+            "lastname": "B\u00f6rjesson",
+            "secNumber": "19820114"
+        }
+    ]
+}
