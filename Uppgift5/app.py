@@ -40,14 +40,28 @@ def form_post():
 @app.route('/users', methods=['GET'])
 def get_persons():
   with open('people.json', 'r') as f:
-    return render_template('listpersons.html', people=json.loads(f.read())['people'])
+     people = json.load(f)
+     return jsonify(people)
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/users/:ssn')
-def profile(username):
-    return "<h2>Hello %s<h2>" %username
-    if __name__ == "__main__":
-        app.run()
+@app.route('/users/<secNumber>', methods=['GET'])
+def profile(secNumber):
+      with open('people.json', 'r') as f:
+        people = json.load(f)
+        for key, value in people.items():
+            for person in value:
+                if(person['secNumber']== secNumber):
+                    data_dict = {
+                        "firstname":person['firstname'],
+                        "lastname":person['lastname'],
+                        "email":person['email'],
+                        "address":person['address'],
+                        "comment":person['comment'],
+                        "secNumber":person['secNumber']
+                        }
+                    return jsonify(data_dict)
+if __name__ == "__main__":
+    app.run()
