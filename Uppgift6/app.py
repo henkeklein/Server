@@ -40,10 +40,10 @@ def get_forms():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/users/<title>', methods=['GET'])
-def get_one_form(secNumber):
+@app.route('/forms/<title>', methods=['GET'])
+def get_one_form(title):
       with open('forms.json', 'r') as f:
-        people = json.load(f)
+        forms = json.load(f)
         for key, value in forms.items():
             for form in value:
                 if(form['title']== title):
