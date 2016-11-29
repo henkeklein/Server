@@ -104,21 +104,22 @@ def edit_one_form(title):
 
 @app.route('/forms/<title>/edit/done', methods=['POST'])
 def save_edit_form(title):
-    data = json.load(open('forms.json'))
-    for key, value in data.items():
-        for form in value:
-            if(form['title']== title):
-                data_dict = {
-                "title": request.form['title'],
-                "author": request.form['author'],
-                "content": request.form['content'],
-                }
-                data["forms"].append(data_dict)
+    with open('forms.json', 'r') as f:
+        data = json.load(f)
+        for key, value in data.items():
+            for form in value:
+                if(form['title']== title):
+                    data_dict = {
+                    "title": request.form['title'],
+                    "author": request.form['author'],
+                    "content": request.form['content'],
+                    }
+                    data["forms"].append(data_dict)
 
-                for i in xrange(len(data["forms"])):
-                    if data["forms"][i]["title"] == title:
-                        data["forms"].pop(i)
-                        break
+                    for i in xrange(len(data["forms"])):
+                        if data["forms"][i]["title"] == title:
+                            data["forms"].pop(i)
+                            break
 
     writing_file = open('forms.json', 'w')
     writing_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
