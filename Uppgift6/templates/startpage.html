@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Add Person</title>
+    <title>Add Article</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <h1>Add New Person</h1>
+  <h1>Add New Article</h1>
 
   <div class="text-center">
   <a href="{{url_for('get_forms')}}"
@@ -18,11 +18,11 @@
   <form action="/done" method="POST">
   <div class="col-sm-10">
     <label>Title:</label>
-    <input type="text" class="form-control" name="title" placeholder="Firstname">
+    <input type="text" class="form-control" name="title" placeholder="Title">
   </div>
   <div class="col-sm-10">
   <label>Author:</label>
-  <input type="text" class="form-control" name="author" placeholder="Lastname">
+  <input type="text" class="form-control" name="author" placeholder="Author">
 </div>
 
 <div class="col-sm-10">

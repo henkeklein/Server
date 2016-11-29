@@ -8,7 +8,7 @@ app = Flask(__name__)
 def main():
     return render_template('startpage.html')
 
-def add_person(form):
+def add_form(form):
     f = open("forms.json")
     data = json.load(f)
     data["forms"].append(form)
@@ -29,19 +29,25 @@ def form_post():
         "author":author,
         "content":content
     }
-    add_person(data_dict)
+    add_form(data_dict)
     return render_template('done.html', title=title, author=author)
 @app.route('/forms', methods=['GET'])
 def get_forms():
   with open('forms.json', 'r') as f:
      return render_template('listforms.html', forms=json.loads(f.read())['forms'])
 
+@app.route('/api/forms', methods=['GET'])
+def get_json():
+  with open('forms.json', 'r') as f:
+      forms = json.load(f)
+      return jsonify(forms)
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/forms/<title>', methods=['GET'])
-def get_one_form(title):
+@app.route('/api/forms/<title>', methods=['GET'])
+def profile(title):
       with open('forms.json', 'r') as f:
         forms = json.load(f)
         for key, value in forms.items():
@@ -53,5 +59,59 @@ def get_one_form(title):
                         "content":form['content'],
                         }
                     return jsonify(data_dict)
+
+@app.route('/forms/<title>/', methods=['GET'])
+def get_one_form(title):
+      with open('forms.json', 'r') as f:
+        forms = json.load(f)
+        for key, value in forms.items():
+            for form in value:
+                if(form['title']== title):
+                    title = form['title']
+                    author = form['author']
+                    content = form['content']
+                    return render_template('listone.html', title=title, author=author, content=content)
+
+@app.route('/forms/<title>/edit', methods=['GET'])
+def edit_one_form(title):
+      with open('forms.json', 'r') as f:
+        forms = json.load(f)
+        for key, value in forms.items():
+            for form in value:
+                if(form['title']== title):
+                    title = form['title']
+                    author = form['author']
+                    content = form['content']
+                    data_dict = {
+                        "title":title,
+                        "author":author,
+                        "content":content
+                        }
+
+                    return render_template('editForm.html', title=title, author=author, content=content)
+
+def edit_form(form):
+    f = open("forms.json")
+    data = json.load(f)
+    data["forms"].update(form)
+    f.close()
+
+    writing_file = open('forms.json', 'w')
+    writing_file.write(json.dumps(data, sort_keys=True, indent=4, separators=(',',': ')))
+    writing_file.close()
+
+@app.route('/doneedit', methods=['POST'])
+def edit_post():
+    title = request.form['title']
+    author = request.form['author']
+    content = request.form['content']
+
+    data_dict = {
+        "title":title,
+        "author":author,
+        "content":content
+    }
+    edit_form(data_dict)
+    return render_template('done.html', title=title, author=author, content=content)
 if __name__ == "__main__":
     app.run()
