@@ -1,5 +1,8 @@
+import io
+import os
 import json
 from pprint import pprint
+path = 'players.json'
 
 def add_player(player):
     f = open('players.json')
@@ -17,19 +20,28 @@ def print_players():
     pprint(file_contents)
     f.close()
 
+def check_file():
+    if(os.path.isfile(path)):
+        print 'File exist'
+    else:
+        with io.FileIO("players.json", "w") as file:
+            file.write('{"players": []}')
+            print 'New file created'
+
 def start():
+    check_file()
     while True:
         choice = raw_input("Choose: (1) Add player, (2) List all players\n")
         if choice == '1':
-                firstname = raw_input("Firstname: \n")
-                lastname = raw_input("Lastname: \n")
-                country = raw_input("Country: \n")
-                data_dict = {
-                    "firstname":firstname,
-                    "lastname":lastname,
-                    "country":country
-                }
-                add_player(data_dict)
+            firstname = raw_input("Firstname: \n")
+            lastname = raw_input("Lastname: \n")
+            country = raw_input("Country: \n")
+            data_dict = {
+                "firstname":firstname,
+                "lastname":lastname,
+                "country":country
+            }
+            add_player(data_dict)
         elif choice == "2":
             print_players()
         else:
