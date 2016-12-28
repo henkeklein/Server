@@ -63,7 +63,7 @@ def profile(secNumber):
                         "secNumber":person['secNumber']
                         }
                     return jsonify(data_dict)
-                else:
-                    return render_template('404.html'), 404
+            else:
+                return render_template('404.html'), 404
 if __name__ == "__main__":
     app.run()
