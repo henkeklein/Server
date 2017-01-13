@@ -82,6 +82,8 @@ def get_one_form(title):
                     author = form['author']
                     content = form['content']
                     return render_template('listone.html', title=title, author=author, content=content)
+                else:
+                    return render_template('titlenotfound.html'), 404
 
 #--------------------EDIT ONE FORM---------------
 
